@@ -142,7 +142,7 @@ cyp_full <-bind_rows(gbif_cyp,inat_cyp)
 
 sal_full <-bind_rows(gbif_sal,inat_sal)
 
-# Gbif (sal + cyp) + iNat (sal + cyp)
+# Collaps all matrix in only one: Gbif (sal + cyp) + iNat (sal + cyp)
 matrix_full <- bind_rows(gbif_sal, gbif_cyp,inat_sal,inat_cyp)
 
 # ================================
@@ -161,6 +161,8 @@ Switzerland <- ne_countries(
 # => here I change the names to have only one name for each species (Salamandra atra and Cypripedium calceolus)
 
 unique(matrix_full$species)
+# In the two database we have two different name for the same species, here i change 
+# the name to have only one name for each species in my matrix_full
 matrix_full$species[matrix_full$species == "Salamandra atra atra"] <- "Salamandra atra"
 matrix_full$species[matrix_full$species == "Cypripedium parviflorum"] <- "Cypripedium calceolus"
 

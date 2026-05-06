@@ -77,7 +77,8 @@ matrix_full_eco_elev <- data.frame(
 # Compare elevation distributions across climate categories
 # you can change the fill parameter with any of the column name
 
-p3 <- ggplot(matrix_full_eco_elev, aes(x = elevation, fill = Climate_Re)) +
+# aes(x = elevation, fill = species) => i want to see the elevetion in function of the density of the two species observed
+p3 <- ggplot(matrix_full_eco_elev, aes(x = elevation, fill = species)) +
   geom_density(alpha = 0.5, adjust = 3) +  # smoothed density curves
   labs(
     title = "Elevation Distribution by Climate",

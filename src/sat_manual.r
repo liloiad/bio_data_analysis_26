@@ -57,22 +57,23 @@ product <- "MOD13Q1" # NDVI
 # This file can be uploaded directly in the AppEEARS web interface
 # when creating an area request.
 
-switzerland_sf <- ne_countries(
-  scale = "medium",
-  country = "Switzerland",
-  returnclass = "sf"
-)
+#switzerland_sf <- ne_countries(
+#  scale = "medium",
+#  country = "Switzerland",
+#  returnclass = "sf"
+#)
 
-dir.create(".data", showWarnings = FALSE)
+#dir.create(".data", showWarnings = FALSE)
 
 # export my polygon
-st_write(
-  switzerland_sf,
-  "./data/switzerland.geojson",
-  delete_dsn = TRUE
-)
+#st_write(
+#  switzerland_sf,
+#  "./data/switzerland.geojson",
+#  delete_dsn = TRUE
+#)
 
-plot(st_geometry(switzerland_sf), col = "lightgray", main = "Switzerland")
+#plot(st_geometry(switzerland_sf), col = "lightgray", main = "Switzerland")
+
 
 # ------------------------------------------------------------------------------
 # MANUAL STEP IN APP EEARS
@@ -89,10 +90,13 @@ plot(st_geometry(switzerland_sf), col = "lightgray", main = "Switzerland")
 # 10. Save it in the folder: ./data/appeears_manual_download
 # ------------------------------------------------------------------------------
 
+# I chose the NDVI data for June and July 2025 because that is when the vegetation 
+# is most uniform and also coincides with the active period of the Alpine salamanders
 
 # ==============================================================================
 # 5. Read the manually downloaded NDVI raster
 # ==============================================================================
+# I have to put here the path of the folder with the downloaded files .tif
 manual_path <- "./data/appeears_manual_download"
 
 # List all tif files in the folder
@@ -135,7 +139,7 @@ plot(switzerland_vect, add = TRUE, border = "black", lwd = 1)
 # ==============================================================================
 # 7. Convert the sampling table to spatial points
 # ==============================================================================
-# We assume your data frame is called matrix_full_eco
+# My data frame is called matrix_full_eco
 # and contains longitude and latitude columns.
 
 points_vect <- vect(
@@ -177,7 +181,8 @@ head(matrix_full_eco)
 # 10. Simple control plot
 # ==============================================================================
 
-con_plot <-  ggplot(matrix_full_eco, aes(x = NDVI, fill = Climate_Re)) +
+# aes(x = NDVI, fill = species) -> i want to see the NDVI in function of the density of the two species observed
+con_plot <-  ggplot(matrix_full_eco, aes(x = NDVI, fill = species)) +
               geom_density(alpha = 0.5, adjust = 3) +  # smoothed density curves
               labs(
                 title = "NDVI Distribution by Climate",
