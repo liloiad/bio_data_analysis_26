@@ -65,7 +65,7 @@ elevation <- raster::extract(elevation_switzerland, spatial_points)
 # =========================
 # 6. Add elevation to the dataset
 # =========================
-matrix_full_eco_elev <- data.frame(
+matrix_full_eco <- data.frame(
   matrix_full_eco,
   elevation = elevation
 )
@@ -78,10 +78,10 @@ matrix_full_eco_elev <- data.frame(
 # you can change the fill parameter with any of the column name
 
 # aes(x = elevation, fill = species) => i want to see the elevetion in function of the density of the two species observed
-p3 <- ggplot(matrix_full_eco_elev, aes(x = elevation, fill = species)) +
+p3 <- ggplot(matrix_full_eco, aes(x = elevation, fill = species)) +
   geom_density(alpha = 0.5, adjust = 3) +  # smoothed density curves
   labs(
-    title = "Elevation Distribution by Climate",
+    title = "Elevation Distribution by Species",
     x = "Elevation (m)",
     y = "Density"
   ) +
@@ -89,3 +89,4 @@ p3 <- ggplot(matrix_full_eco_elev, aes(x = elevation, fill = species)) +
 
 # Display the plot
 print(p3)
+

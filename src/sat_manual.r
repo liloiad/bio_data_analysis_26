@@ -57,11 +57,11 @@ product <- "MOD13Q1" # NDVI
 # This file can be uploaded directly in the AppEEARS web interface
 # when creating an area request.
 
-#switzerland_sf <- ne_countries(
-#  scale = "medium",
-#  country = "Switzerland",
-#  returnclass = "sf"
-#)
+switzerland_sf <- ne_countries(
+  scale = "medium",
+  country = "Switzerland",
+  returnclass = "sf"
+)
 
 #dir.create(".data", showWarnings = FALSE)
 
@@ -185,10 +185,11 @@ head(matrix_full_eco)
 con_plot <-  ggplot(matrix_full_eco, aes(x = NDVI, fill = species)) +
               geom_density(alpha = 0.5, adjust = 3) +  # smoothed density curves
               labs(
-                title = "NDVI Distribution by Climate",
+                title = "NDVI Distribution by Species",
                 x = "NDVI",
                 y = "Density"
               ) +
               theme_minimal()
 
 print(con_plot)
+View(matrix_full_eco)

@@ -116,7 +116,7 @@ inat_cyp_raw <- get_inat_obs(
 # =============== 3.1) FORMAT iNaturalist DATA
 
 # FOR SALAMANDRA ATRA
-# same name column that before 
+# same name column that before for Gbif
 inat_sal <- data.frame(
   species   = inat_sal_raw$scientific_name,
   latitude  = inat_sal_raw$latitude,
@@ -126,6 +126,7 @@ inat_sal <- data.frame(
 )
 
 # FOR CYPROPEDIUM CALCEOLUS
+# same name column that before for Gbif
 inat_cyp <- data.frame(
   species   = inat_cyp_raw$scientific_name,
   latitude  = inat_cyp_raw$latitude,
@@ -138,9 +139,9 @@ inat_cyp <- data.frame(
 # 4) MERGE ALL DATA
 # ================================
 
-cyp_full <-bind_rows(gbif_cyp,inat_cyp)
+cyp_full <- bind_rows(gbif_cyp,inat_cyp)
 
-sal_full <-bind_rows(gbif_sal,inat_sal)
+sal_full <- bind_rows(gbif_sal,inat_sal)
 
 # Collaps all matrix in only one: Gbif (sal + cyp) + iNat (sal + cyp)
 matrix_full <- bind_rows(gbif_sal, gbif_cyp,inat_sal,inat_cyp)
