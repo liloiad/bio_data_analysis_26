@@ -19,3 +19,5 @@ source("./src/elevation.R")
 source("./src/sat_manual.r")
 
 source("./src/climate.r")
+
+source("./src/combined_figures.R")
