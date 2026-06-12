@@ -14,7 +14,7 @@ Creation of a matrix containing all the ecological data on the two selected alpi
 Analysis of the data collected in the matrix to answer an ecological question regarding the two species.
 
 - Principal Component Analysis (PCA)
-- Identification of discriminating variables using random forest or other approaches
+- Identification of discriminating variables using random forest
 - Visualization of variable importance (feature importance plots)
 - Comparison of key variables with boxplot
 - 2D maps of species distributions
