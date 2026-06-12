@@ -19,5 +19,7 @@ Analysis of the data collected in the matrix to answer an ecological question re
 - Comparison of key variables with boxplot
 - 2D maps of species distributions
 
+In all the R files in the second part (except for read_matrix.r), there are comments beginning with **#INTERPRETATION** that provide an interpretation of the figures or the tests performed on the data. 
+
 ##  Ecological question
 **What are the differences in the ecological and climatic niches of the two alpine species, Cypripedium calceolus and Salamandra atra, and how might global climate change affect them?**
