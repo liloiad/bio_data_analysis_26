@@ -1,11 +1,3 @@
-library(rgbif)         # access to GBIF data
-library(rnaturalearth) # country maps
-library(ggplot2)       # graphics
-library(rinat)         # access to iNaturalist data
-library(raster)        # spatial extent management
-library(dplyr)         # table manipulation
-library(sf)            # modern spatial objects
-
 # Disable spherical geometry for simpler spatial operations
 sf_use_s2(FALSE)
 

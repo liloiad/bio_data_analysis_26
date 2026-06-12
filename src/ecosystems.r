@@ -17,11 +17,6 @@
 # rnaturalearth: to download country boundaries
 # ggplot2: to create graphs
 
-library(raster)
-library(sf)
-library(rnaturalearth)
-library(ggplot2)
-
 #------------------------------------------------------------------------------
 # 2) LOAD THE ECOSYSTEM RASTER
 #------------------------------------------------------------------------------

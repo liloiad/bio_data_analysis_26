@@ -1,37 +1,8 @@
-#  WORKSHOP – DATA VISUALIZATION IN R
-#  Data: Cardamine observations in Switzerland
-#
-#  Outline:
-#    1. Load the data
-#    2. Plot A – Map
-#    3. Plot B – Radar chart
-#    4. Plot C – Boxplot
-#    5. Plot D – Scatter plot
-#    6. Combine the plots with cowplot (ggdraw)
-# ============================================================
+# ==============================================================================
+# ANALYSIS 6: COMBINED GRAPHS IN A SINGLE FIGURE
+# ==============================================================================
 
-
-# ---- Packages ----
-# Install only once if needed:
-# install.packages(c("ggplot2","dplyr","sf","terra","rnaturalearth",
-#                    "rnaturalearthdata","ggnewscale","fmsb","cowplot"))
-
-library(ggplot2)
-library(dplyr)
-library(sf)
-library(terra)
-library(rnaturalearth)
-library(rnaturalearthdata)
-library(ggnewscale)
-library(fmsb)
-library(cowplot)
-
-
-# ---- Working directory and files ----
-#setwd("C:/Users/didil/OneDrive/Desktop/Biodiversity data analysis/my_project_2026")
-
-#df  <- read.csv("matrix_full_eco_elev_clim_sat.csv", stringsAsFactors = FALSE)
-df <- matrix_full_eco
+#df  <- read.csv("matrix_full.csv", stringsAsFactors = FALSE)
 # Print a quick summary of the dataset dimensions
 cat(nrow(df), "lignes,", ncol(df), "colonnes\n")
 # Show the first rows to check that the import worked correctly
@@ -61,7 +32,7 @@ wte_df$Value     <- as.numeric(wte_df$Value)
 # and the ecosystem name (column "W_Ecosystm") for each observation.
 # We extract unique pairs to build the palette.
 palette_wte <- df %>%
-  select(Value = eco_values, W_Ecosystm, color) %>%
+  dplyr::select(Value = eco_values, W_Ecosystm, color) %>%
   distinct()
 
 pal_wte <- setNames(palette_wte$color, palette_wte$W_Ecosystm)
@@ -306,6 +277,30 @@ ggsave("figure_alpine_species_suisse.png", figure_finale,
 ggsave("figure_alpine_species_suisse.pdf", figure_finale,
        width = 13, height = 16, device = cairo_pdf)
 
-message("Export terminé dans : ", getwd())
 
+# INTERPRETATION
 
+# PANEL A: we can see that the map confirms what has been seen 
+# with the previous analyses. Cypripedium calceolus is found in the plateau 
+# and in the lower Alpine areas while Salamandra atra is distributed throughout
+# the central Alpine chain at higher altitudes. 
+
+# PANEL B: We can reconnect this graph to PANEL A and see 
+# once again the separation of the two niches for the two species. 
+# We can see that according to this Radar plot the Salamander atra 
+# prefers habitats like Polar Moist that are colder and higher, while 
+# Cypripedium calceolus prefers the other two habitats because they are 
+# characterized by higher temperatures and a higher NDVI index. 
+
+# PANEL C: According to this graph the altitude determines which types of 
+# land cover are found. Reconnecting at altitude and at 
+# preferred temperatures of the two species we can say that Cropland and Forest 
+# they stop at low altitudes (below 1500-2000 m) and coincide with the habitat 
+# of the orchid, while Grassland, Sparsely vegetated and Snow and ice dominate 
+# above 2000 m which coincide with the salamander's habitat.
+
+# PANEL D: according to this graph the Salamander atra occupies a range 
+# much narrower altitudinal than Cypripedium calceolus. We can 
+# reconnect this panel to the fact that most likely the 
+# Salamandra atra will be the one who will suffer the most from the consequences 
+# of the climate change as it has more specific temperature demands. 

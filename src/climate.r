@@ -3,13 +3,8 @@
 # ADD CLIMATE DATA TO AN EXISTING SPECIES COORDINATE TABLE
 ###############################################################################
 # =========================
-# 1) PACKAGES
+# 1) PACKAGES in my_project.r
 # =========================
-
-library(Rchelsa)
-library(terra)
-library(dplyr)
-library(ggplot2)
 
 # =========================
 # 2) STARTING DATASET
@@ -293,3 +288,6 @@ p6 <- ggplot(matrix_full_eco,
 
 print(p6)
 View(matrix_full_eco)
+
+#Export final matrix
+#write.table(matrix_full_eco, file="matrix_full.csv")

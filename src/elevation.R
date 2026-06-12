@@ -3,15 +3,8 @@
 ################################################################################
 
 # =========================
-# 1. Load required packages
+# 1. Load required packages in my_project.r
 # =========================
-library(sf)        # modern spatial data handling (simple features)
-library(elevatr)   # download elevation data
-library(raster)    # raster data manipulation (maps)
-library(ggplot2)   # data visualization
-library(rnaturalearthdata)
-library(rmarkdown)
-library(progress)
 
 # Disable s2 geometry engine (can avoid issues in some spatial operations)
 sf_use_s2(FALSE)

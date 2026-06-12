@@ -5,16 +5,9 @@
 ################################################################################
 
 # ==============================================================================
-# 1. Load required packages
+# 1. Load required packages in my_project.r
 # ==============================================================================
-library(luna)
-library(MODIStsp)
-library(appeears)
-library(terra)
-library(sf)
-library(rnaturalearth)
-library(ggplot2)
-library(dplyr)
+
 
 # ------------------------------------------------------------------------------
 # Optional installation
